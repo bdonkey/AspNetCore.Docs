@@ -1,6 +1,6 @@
 @page "/todo"
 
-<h1>Todo</h1>
+<h3>Todo</h3>
 
 <ul>
     @foreach (var todo in todos)
@@ -12,6 +12,6 @@
 <input placeholder="Something todo" />
 <button>Add todo</button>
 
-@functions {
+@code {
     private IList<TodoItem> todos = new List<TodoItem>();
 }

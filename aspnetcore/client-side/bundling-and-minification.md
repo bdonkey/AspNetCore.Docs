@@ -4,7 +4,7 @@ author: scottaddie
 description: Learn how to optimize static resources in an ASP.NET Core web application by applying bundling and minification techniques.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 05/10/2019
+ms.date: 06/17/2019
 uid: client-side/bundling-and-minification
 ---
 # Bundle and minify static assets in ASP.NET Core
@@ -80,7 +80,7 @@ The *bundleconfig.json* file defines the options for each bundle. In the precedi
 Configuration options include:
 
 * `outputFileName`: The name of the bundle file to output. Can contain a relative path from the *bundleconfig.json* file. **required**
-* `inputFiles`: An array of files to bundle together. These are relative paths to the configuration file. **optional**, *an empty value results in an empty output file. [globbing](http://www.tldp.org/LDP/abs/html/globbingref.html) patterns are supported.
+* `inputFiles`: An array of files to bundle together. These are relative paths to the configuration file. **optional**, *an empty value results in an empty output file. [globbing](https://www.tldp.org/LDP/abs/html/globbingref.html) patterns are supported.
 * `minify`: The minification options for the output type. **optional**, *default - `minify: { enabled: true }`*
   * Configuration options are available per output file type.
     * [CSS Minifier](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
@@ -128,19 +128,19 @@ Clean the project. The following appears in the Output window:
 
 Add the *BuildBundlerMinifier* package to your project:
 
-```console
+```dotnetcli
 dotnet add package BuildBundlerMinifier
 ```
 
 If using ASP.NET Core 1.x, restore the newly added package:
 
-```console
+```dotnetcli
 dotnet restore
 ```
 
 Build the project:
 
-```console
+```dotnetcli
 dotnet build
 ```
 
@@ -158,7 +158,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
 Clean the project:
 
-```console
+```dotnetcli
 dotnet clean
 ```
 
@@ -186,7 +186,7 @@ It's possible to run the bundling and minification tasks on an ad hoc basis, wit
 
 This package extends the .NET Core CLI to include the *dotnet-bundle* tool. The following command can be executed in the Package Manager Console (PMC) window or in a command shell:
 
-```console
+```dotnetcli
 dotnet bundle
 ```
 
@@ -207,7 +207,7 @@ To minify *custom.css* and bundle it with *site.css* into a *site.min.css* file,
 > Alternatively, the following globbing pattern could be used:
 >
 > ```json
-> "inputFiles": ["wwwroot/**/*(*.css|!(*.min.css))"]
+> "inputFiles": ["wwwroot/**/!(*.min).css" ]
 > ```
 >
 > This globbing pattern matches all CSS files and excludes the minified file pattern.
@@ -281,6 +281,9 @@ If Visual Studio and/or the Bundler & Minifier extension aren't available, conve
 
 Add a *package.json* file, with the following `devDependencies`, to the project root:
 
+> [!WARNING]
+> The `gulp-uglify` module doesn't support ECMAScript (ES) 2015 / ES6 and later. Install [gulp-terser](https://www.npmjs.com/package/gulp-terser) instead of `gulp-uglify` to use ES2015 / ES6 or later.
+
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/package.json?range=5-13)]
 
 Install the dependencies by running the following command at the same level as *package.json*:
@@ -318,7 +321,6 @@ In this example, any tasks defined within the `MyPreCompileTarget` target run be
 1>[14:17:49] Finished 'min:css' after 88 ms
 ========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
 ```
-
 
 ## Additional resources
 

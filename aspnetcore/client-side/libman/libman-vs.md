@@ -18,7 +18,7 @@ Visual Studio has built-in support for [LibMan](xref:client-side/libman/index) i
 * Search dialog for finding libraries and adding the files to a project.
 * Editing support for *libman.json*&mdash;the LibMan manifest file.
 
-[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/client-side/libman/samples/) [(how to download)](xref:index#how-to-download-a-sample)
+[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/client-side/libman/samples/) [(how to download)](xref:index#how-to-download-a-sample)
 
 ## Prerequisites
 
@@ -88,7 +88,7 @@ To open *libman.json* for editing, the following options exist:
 
 **&#8224;** If the *libman.json* file doesn't already exist in the project root, it will be created with the default item template content.
 
-Visual Studio offers rich JSON editing support such as colorization, formatting, IntelliSense, and schema validation. The LibMan manifest's JSON schema is found at [http://json.schemastore.org/libman](http://json.schemastore.org/libman).
+Visual Studio offers rich JSON editing support such as colorization, formatting, IntelliSense, and schema validation. The LibMan manifest's JSON schema is found at [https://json.schemastore.org/libman](https://json.schemastore.org/libman).
 
 With the following manifest file, LibMan retrieves files per the configuration defined in the `libraries` property. An explanation of the object literals defined within `libraries` follows:
 
